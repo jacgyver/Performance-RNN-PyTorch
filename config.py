@@ -15,7 +15,8 @@ model = {
 }
 
 train = {
-    'learning_rate': 0.001,
+    'learning_rate': 0.1,
+#    'learning_rate': 0.001,    
     'batch_size': 64,
     'window_size': 200,
     'stride_size': 10,
