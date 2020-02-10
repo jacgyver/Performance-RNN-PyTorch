@@ -18,7 +18,7 @@ for page in $pages; do
     for midi in $midis; do
         echo "http://www.piano-midi.de/$midi"
     done | tee /dev/stderr | wget -P $dir -i -
-    let "$num += 1"
+    let "num += 1"
 done
 cd $dir
 ls | egrep -v -i '\.mid$' | xargs rm
