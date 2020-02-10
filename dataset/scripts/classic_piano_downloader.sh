@@ -10,8 +10,9 @@ echo Pages: $pages
 mkdir -p $dir
 num = 0
 for page in $pages; do
-    if [$num -gt 10]
-    then exit 1
+    if ['expr $num' -gt 10]
+    then 
+        exit 1
     fi
     midis=$(curl -s --max-time 5 $base/$page | egrep '[^"]+format0\.mid' -o)
     for midi in $midis; do
