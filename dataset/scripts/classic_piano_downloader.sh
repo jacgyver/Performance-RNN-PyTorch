@@ -8,11 +8,16 @@ pages=$(curl -s --max-time 5 $base/midi_files.htm \
     | egrep '[^"]+\.htm' -o)
 echo Pages: $pages
 mkdir -p $dir
+num = 0
 for page in $pages; do
+    if [$num -gt 10]
+    then exit 1
+    fi
     midis=$(curl -s --max-time 5 $base/$page | egrep '[^"]+format0\.mid' -o)
     for midi in $midis; do
         echo "http://www.piano-midi.de/$midi"
     done | tee /dev/stderr | wget -P $dir -i -
+    num = 'expr $num + 1'
 done
 cd $dir
 ls | egrep -v -i '\.mid$' | xargs rm
