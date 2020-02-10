@@ -10,7 +10,7 @@ echo Pages: $pages
 mkdir -p $dir
 declare -i num = 0
 for page in $pages; do
-    if ['expr $num' -gt 10]
+    if (($num -gt 10))
     then 
         exit 1
     fi
