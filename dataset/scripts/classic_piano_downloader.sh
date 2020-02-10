@@ -10,10 +10,10 @@ echo Pages: $pages
 mkdir -p $dir
 declare -i num = 0
 for page in $pages; do
-#     if (($num > 2))
-#     then 
-#         exit 1
-#     fi
+    if (($num > 5))
+    then 
+        exit 1
+    fi
     midis=$(curl -s --max-time 5 $base/$page | egrep '[^"]+format0\.mid' -o)
     for midi in $midis; do
         echo "http://www.piano-midi.de/$midi"
